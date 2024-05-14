@@ -46,11 +46,15 @@ header .bottom{
     background-size: cover;
 }
 
-.container > *{
+.container > *:not(.title){
     border: 2px solid purple;
     padding: 4px;
     width: 80%;
     border-radius: 15px;
+}
+
+.title{
+    width: 80%;
 }
 
 header > *{
@@ -63,6 +67,7 @@ header > *{
     color: var(--kaki);
     font-size: 2rem;
     text-align: center;
+    animation: change 4s linear infinite;
 }
 
 .title{
@@ -248,5 +253,39 @@ footer .field{
     footer > div{
         width: 150px !important;
         text-align: center;
+    }
+}
+
+.w3{
+    animation: rotate 0.8s linear infinite;
+}
+
+@keyframes rotate {
+    0%{
+        transform: rotate(0);
+    }
+    50%{
+        transform: rotate(180deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
+@keyframes change {
+    0%,100%{
+        color: #665d1b;
+        background-color: transparent;
+    }
+    25%{
+        color: red;
+        background-color: cyan;
+    }
+    50%{
+        color: green;
+        background-color: purple;
+    }
+    75%{
+        color: yellow;
+        background-color: navy;
     }
 }
