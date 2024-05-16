@@ -3,6 +3,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: sans-serif;
+    transform-style: preserve-3d;
 }
 
 :root{
@@ -11,7 +12,7 @@
 
 body,html{
     width: 100%;
-    max-width: 90vw;
+    max-width: 100vw;
     min-height: 100vh;
 }
 
@@ -108,6 +109,8 @@ header > *{
     padding: 2px;
     opacity: 0;
     animation: spawn 0.6s linear forwards;
+    background-color: transparent;
+    perspective: 1000px;
 }
 
 .equipe .profile:nth-child(1){
@@ -160,11 +163,25 @@ header > *{
     border: 1px solid red;
 }
 
-.competences img{
+.competences .image{
     width: 100%;
-    height: 300px;
-    object-fit: cover;
-    object-position: center;
+    height: 200px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+.competences .skill:nth-child(1) .image{
+    background-image: url(../images/competences/html.png);
+}
+.competences .skill:nth-child(2) .image{
+    background-image: url(../images/competences/css.png);
+}
+.competences .skill:nth-child(3) .image{
+    background-image: url(../images/competences/js.png);
+}
+.competences .skill:nth-child(4) .image{
+    background-image: url(../images/competences/react.png);
 }
 
 .skill > *{
@@ -239,7 +256,10 @@ footer .field{
     }
 
     .skill h3{
-        width: 50%;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        height: auto !important;
     }
 }
 
@@ -320,4 +340,26 @@ footer .field{
         color: yellow;
         background-color: navy;
     }
+}
+
+.profile-inner{
+    position: relative;
+    transition: all 1s ease-in-out;
+    transform-style: preserve-3d;
+}
+
+.profile:hover .profile-inner{
+    transform: rotateY(180deg);
+}
+
+.profile-front,.profile-back{
+    position: relative;
+    backface-visibility: hidden !important;
+    -webkit-backface-visibility: hidden;
+    color: white !important;
+}
+
+.profile-back{
+    background-color: navy;
+    transform: rotateY(180deg);
 }
